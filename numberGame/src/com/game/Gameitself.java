@@ -83,15 +83,14 @@ public class Gameitself {
    static public int aiMoveChoice(String generated){
         int choice=0;
        for (int i = 0; i < generated.length(); i++) {
-           if (generated.indexOf(i) == '0') {
+           if (generated.charAt(i) == '0') {
                choice=0;
                break;
            }
-           else if(generated.indexOf(i)=='1'){
+           else if(generated.charAt(i)=='1'){
                choice=1;
                break;
            }
-
        }
        return choice;
 }
@@ -100,27 +99,23 @@ static  public int aiPositionChoice(String generated,int aiChoice){
         int choice=0;
     if (aiChoice == 0) {
         for (int i = generated.length()-1; i >=0 ; i--) {
-            if (generated.indexOf(i) == '0') {
+            if (generated.charAt(i) == '0') {
                 choice=generated.length()-i;
                 break;
             }
         }
-
     }
     else if(aiChoice==1){
         for (int i = 0; i <generated.length() ; i++) {
-            if (generated.indexOf(i)=='1'||generated.indexOf(i)=='2') {
+            if (generated.charAt(i)=='1'||generated.charAt(i)=='2') {
                 choice=i+1;
+                break;
             }
         }
     }
     return choice;
 }
 
-    public static void main(String[] args) {
-        String generated="5231205661024";
-        System.out.println(generated.charAt(4));
-    }
 
 }
 
