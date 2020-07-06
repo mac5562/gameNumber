@@ -30,7 +30,7 @@ public class Gameitself {
         boolean result=false;
 
            for (int i = 0; i < generated.length(); i++) {
-               if (number <= generated.length()+1 && i== number-1 && Character.getNumericValue(generated.indexOf(i)) !=0 ){
+               if (number <= generated.length()+1 && i== number-1 && Character.getNumericValue(generated.charAt(i)) !=0 ){
                     result=true;
                     break;
                }
@@ -44,7 +44,7 @@ public class Gameitself {
        public static boolean chekerTwo(String generated,int position){
         boolean result=false;
            for (int i = generated.length()-1; i >=generated.length()-position ; i--) {
-                if (position<= generated.length()&& Character.getNumericValue(generated.indexOf(generated.length()-position))==0&&i==generated.length()-position) {
+                if (position<= generated.length()&& Character.getNumericValue(generated.charAt(generated.length()-position))==0&&i==generated.length()-position) {
                    result=true;
                    break;
                 }
@@ -58,7 +58,7 @@ public class Gameitself {
    public static  String decrease(String generated,int position){
     String newone=generated;
     char [] ch=newone.toCharArray();
-    int number=(Character.getNumericValue(newone.indexOf(position-1)))+'0';
+    int number=(Character.getNumericValue(newone.charAt(position-1))-1)+'0';
     char replaceble=(char)number;
     ch[position-1]=replaceble;
 
@@ -117,6 +117,10 @@ static  public int aiPositionChoice(String generated,int aiChoice){
     return choice;
 }
 
+    public static void main(String[] args) {
+        String generated="5231205661024";
+        System.out.println(generated.charAt(4));
+    }
 
 }
 
