@@ -1,4 +1,4 @@
-# Mesterséges intelligenciai kis projekt: Szám Játék
+# Mesterséges intelligenciai projekt: Szám Játék
 ##	Projekt leírás:
 * Java-ban készített mesterséges intelligenciás projekt.
 * A játékos képes egyedül játszani a számítógép ellen, vagy más játékosokkal szemben.
