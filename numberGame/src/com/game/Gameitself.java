@@ -2,7 +2,7 @@ package com.game;
 
 import java.util.Random;
 
-public class gameItself {
+public class Gameitself {
     public static String numberGenerator(){
         String generated="";
         int number;
@@ -55,11 +55,67 @@ public class gameItself {
            return result;
     }
 
+   public static  String decrease(String generated,int position){
+    String newone=generated;
+    char [] ch=newone.toCharArray();
+    int number=(Character.getNumericValue(newone.indexOf(position-1)))+'0';
+    char replaceble=(char)number;
+    ch[position-1]=replaceble;
 
+    return newone=new String(ch);
+   }
 
+   public static String removeing(String generated, int position){
+        String newone=generated.substring(0,generated.length()-position);
 
+        return newone;
+   }
 
+   public static void gameOver(int id){
+        if(id==1){
+            System.out.println("játék vége!!! a játékos vesztett");
+        }
+        else {
+            System.out.println("Játék vége !!! az Ai vesztett");
+        }
+   }
 
+   static public int aiMoveChoice(String generated){
+        int choice=0;
+       for (int i = 0; i < generated.length(); i++) {
+           if (generated.indexOf(i) == '0') {
+               choice=0;
+               break;
+           }
+           else if(generated.indexOf(i)=='1'){
+               choice=1;
+               break;
+           }
+
+       }
+       return choice;
+}
+
+static  public int aiPositionChoice(String generated,int aiChoice){
+        int choice=0;
+    if (aiChoice == 0) {
+        for (int i = generated.length()-1; i >=0 ; i--) {
+            if (generated.indexOf(i) == '0') {
+                choice=generated.length()-i;
+                break;
+            }
+        }
+
+    }
+    else if(aiChoice==1){
+        for (int i = 0; i <generated.length() ; i++) {
+            if (generated.indexOf(i)=='1'||generated.indexOf(i)=='2') {
+                choice=i+1;
+            }
+        }
+    }
+    return choice;
+}
 
 
 }
