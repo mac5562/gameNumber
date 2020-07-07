@@ -1,11 +1,11 @@
 import com.game.GameItself;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
 
-public class vsComputerForm extends JFrame{
+public class PvPForm extends JFrame{
     private JPanel MainPanel;
     private JTextArea kéremVálasszonEgyOpciótTextArea;
     private JButton ExitButton;
@@ -17,10 +17,10 @@ public class vsComputerForm extends JFrame{
     private JLabel currentNumber;
     private String currentValue= GameItself.numberGenerator();
 
-    public vsComputerForm() {
+    public PvPForm() {
         add(MainPanel);
-        setSize(550,600);
-        setTitle("Játékos vs Számítógép");
+        setSize(800,600);
+        setTitle("Játékos vs Játékos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         currentNumber.setText(currentValue);
