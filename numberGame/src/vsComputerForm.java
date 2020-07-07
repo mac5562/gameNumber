@@ -19,7 +19,7 @@ public class vsComputerForm extends JFrame{
 
     public vsComputerForm() {
         add(MainPanel);
-        setSize(550,600);
+        setSize(650,600);
         setTitle("Játékos vs Számítógép");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

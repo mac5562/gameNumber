@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class PvPForm extends JFrame{
     private JPanel MainPanel;
@@ -54,5 +57,22 @@ public class PvPForm extends JFrame{
                 }
             }
         });
+    }
+
+    void drawLines(Graphics g) {
+        Color c = new Color(60, 63, 65);
+        Graphics2D g2d = (Graphics2D) g;
+        Stroke stroke = new BasicStroke(3f);
+        g2d.setStroke(stroke);
+        g2d.setColor(c);
+
+        g2d.drawLine(400, 275, 400, 225);
+        g2d.drawLine(400, 300, 400, 400);
+        g2d.drawLine(400, 425, 400, 525);
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        drawLines(g);
     }
 }
