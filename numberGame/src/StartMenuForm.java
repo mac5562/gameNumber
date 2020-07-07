@@ -15,20 +15,29 @@ public class StartMenuForm extends JFrame{
         setSize(400,400);
         setTitle("Szám Játék");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
 
         startButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Próba szöveg.");
+                JOptionPane.showMessageDialog(null, "Próba szöveg", "Szabályok", JOptionPane.INFORMATION_MESSAGE);
             }
         });
+
         ExitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-    }
 
+        startButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new vsComputerForm().setVisible(true);
+            }
+        });
+    }
 }
