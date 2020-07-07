@@ -2,7 +2,7 @@ package com.game;
 
 import java.util.Random;
 
-public class GameItself {
+public  class GameItself {
     public static String numberGenerator(){
         String generated="";
         int number;

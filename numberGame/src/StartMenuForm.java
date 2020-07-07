@@ -16,12 +16,13 @@ public class StartMenuForm extends JFrame{
         setTitle("Szám Játék");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        startButton1.setFocusPainted(false);
 
 
         startButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Adott egy tetszőleges hosszú, 0, 1, . . . , 9 számjegyekből álló szám (vezetőnullák lehetnek az elején). A játékosok felváltva következnek lépni.Egylépésben az alábbi két lépés közül választhatnak: \n 1: egy 0-nál nagyobb számjegy értékét eggyel csökkentik, \n 0: letörölnek a szám végéről egy 0-val kezdődő, legalább 1 hosszú számjegysorozatot \n Az a játékos veszít aki utoljára tud lépni", "Szabályok", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Adott egy tetszőleges hosszú, 0, 1, . . . , 9 számjegyekből álló szám (vezetőnullák lehetnek az elején). \nA játékosok felváltva következnek lépni. Egylépésben az alábbi két lépés közül választhatnak: \n\n 1: egy 0-nál nagyobb számjegy értékét eggyel csökkentik, \n 0: letörölnek a szám végéről egy 0-val kezdődő, legalább 1 hosszú számjegysorozatot \n Az a játékos veszít aki utoljára tud lépni", "Szabályok", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -37,6 +38,13 @@ public class StartMenuForm extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new vsComputerForm().setVisible(true);
+            }
+        });
+        startButton3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new PvPForm().setVisible(true);
             }
         });
     }
