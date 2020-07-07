@@ -66,9 +66,11 @@ public class PvPForm extends JFrame{
         g2d.setStroke(stroke);
         g2d.setColor(c);
 
-        g2d.drawLine(400, 275, 400, 225);
-        g2d.drawLine(400, 300, 400, 400);
-        g2d.drawLine(400, 425, 400, 525);
+        g2d.drawLine(400, 265, 400, 225);
+        g2d.drawLine(400, 305, 400, 395);
+        g2d.drawLine(400, 430, 400, 510);
+        g2d.drawLine(20, 265, 780, 265);
+        g2d.drawLine(20, 510, 780, 510);
     }
 
     public void paint(Graphics g) {
