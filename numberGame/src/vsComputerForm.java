@@ -1,5 +1,3 @@
-
-
 import com.game.GameItself;
 
 import javax.swing.*;

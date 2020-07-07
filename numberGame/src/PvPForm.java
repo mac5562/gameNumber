@@ -1,5 +1,4 @@
 import com.game.GameItself;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
