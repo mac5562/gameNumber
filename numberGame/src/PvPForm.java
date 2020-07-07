@@ -18,7 +18,7 @@ public class PvPForm extends JFrame{
     private JTextField textField1;
     private JTextField textField2;
     private JLabel currentNumber;
-    private String currentValue= GameItself.numberGenerator();
+    private String currentValue=GameItself.numberGenerator();
 
     public PvPForm() {
         add(MainPanel);
