@@ -49,7 +49,7 @@ public class vsComputerForm extends JFrame{
                     currentValue = GameItself.decrease(currentValue, choice);
                     currentNumber.setText(currentValue);
                     kéremVálasszonEgyOpciótTextArea.append("\n a játékos lépett, ");
-                    textField2.setText("");
+                    textField1.setText("");
                     if (!currentValue.contains("0")&&!currentValue.contains("1")) {
                         kéremVálasszonEgyOpciótTextArea.append("\n Játék vége !!! A játékos vesztett");
                         a0NálNagyobbSzámButton.setEnabled(false);
@@ -77,7 +77,7 @@ public class vsComputerForm extends JFrame{
                     currentValue = GameItself.removeing(currentValue, choice);
                     currentNumber.setText(currentValue);
                     kéremVálasszonEgyOpciótTextArea.append("\n a játékos lépett, ");
-                    textField1.setText("");
+                    textField2.setText("");
                     if (!currentValue.contains("0")&&!currentValue.contains("1")) {
                         kéremVálasszonEgyOpciótTextArea.append("\n Játék vége !!! A játékos vesztett");
                         a0NálNagyobbSzámButton.setEnabled(false);
