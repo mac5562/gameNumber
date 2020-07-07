@@ -15,20 +15,33 @@ public class StartMenuForm extends JFrame{
         setSize(400,400);
         setTitle("Szám Játék");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
 
         startButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+<<<<<<< .mine
                 JOptionPane.showMessageDialog(null, "Adott egy tetszőleges hosszú, 0, 1, . . . , 9 számjegyekből álló szám (vezetőnullák lehetnek az elején). A játékosok felváltva következnek lépni.Egylépésben az alábbi két lépés közül választhatnak: \n 1: egy 0-nál nagyobb számjegy értékét eggyel csökkentik, \n 0: letörölnek a szám végéről egy 0-val kezdődő, legalább 1 hosszú számjegysorozatot \n Az a játékos veszít aki utoljára tud lépni");
+=======
+                JOptionPane.showMessageDialog(null, "Próba szöveg", "Szabályok", JOptionPane.INFORMATION_MESSAGE);
+>>>>>>> .theirs
             }
         });
+
         ExitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-    }
 
+        startButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new vsComputerForm().setVisible(true);
+            }
+        });
+    }
 }

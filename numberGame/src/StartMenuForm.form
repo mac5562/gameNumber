@@ -85,7 +85,7 @@
                 <properties>
                   <background color="-1"/>
                   <foreground color="-12828863"/>
-                  <text value="Játékos vs Játékos  "/>
+                  <text value="Játékos vs Számítógép "/>
                 </properties>
               </component>
             </children>
@@ -115,7 +115,7 @@
                 <properties>
                   <background color="-1"/>
                   <foreground color="-12828863"/>
-                  <text value="Játékos vs Számítógép"/>
+                  <text value="Játékos vs Játékos"/>
                 </properties>
               </component>
             </children>
