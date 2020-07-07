@@ -1,3 +1,5 @@
+import com.game.GameItself;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +13,8 @@ public class vsComputerForm extends JFrame{
     private JButton a0NálNagyobbSzámButton;
     private JTextField textField1;
     private JTextField textField2;
+    private JLabel currentNumber;
+    private String currentValue= GameItself.numberGenerator();
 
     public vsComputerForm() {
         add(MainPanel);
@@ -18,6 +22,7 @@ public class vsComputerForm extends JFrame{
         setTitle("Játékos vs Számítógép");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        currentNumber.setText(currentValue);
         textField1.setHorizontalAlignment(JTextField.CENTER);
         textField2.setHorizontalAlignment(JTextField.CENTER);
 
