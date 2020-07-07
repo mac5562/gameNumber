@@ -1,7 +1,6 @@
 package com.game;
 
 import javafx.scene.control.Labeled;
-import sun.font.Decoration;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +18,7 @@ public class GameWindow extends JFrame {
 
 
     public static void main(String[] args) {
-        
+
     }
 
 
