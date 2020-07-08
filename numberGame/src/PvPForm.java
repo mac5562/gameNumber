@@ -225,19 +225,4 @@ public class PvPForm extends JFrame{
             }
         });
     }
-
-    void drawLines(Graphics g) {
-        Color c = new Color(60, 63, 65);
-        Graphics2D g2d = (Graphics2D) g;
-        Stroke stroke = new BasicStroke(3f);
-        g2d.setStroke(stroke);
-        g2d.setColor(c);
-
-        g2d.drawLine(400, 320, 400, 520);
-    }
-
-    public void paint(Graphics g) {
-        super.paint(g);
-        drawLines(g);
-    }
 }
