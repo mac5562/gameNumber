@@ -12,8 +12,8 @@ public class StartMenuForm extends JFrame{
 
     public StartMenuForm() {
         add(panelMain);
-        setSize(400,400);
-        setTitle("Szám Játék");
+        setSize(500,500);
+        setTitle("Start menü");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         startButton1.setFocusPainted(false);

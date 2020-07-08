@@ -1,5 +1,6 @@
 import com.game.GameItself;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,18 +10,19 @@ import java.awt.Graphics2D;
 
 public class PvPForm extends JFrame{
     private JPanel MainPanel;
-    private JTextArea kéremVálasszonEgyOpciótTextArea;
+    private JTextArea msg_area;
     private JButton ExitButton;
     private JButton visszaButton;
-    private JButton a0ValKezdődőSzámjegysorButton1;
-    private JButton a0NálNagyobbSzámButton1;
+    private JButton j1Opcio2;
+    private JButton j1Opcio1;
     private JTextField textField1;
     private JTextField textField2;
     private JLabel currentNumber;
-    private JButton a0NálNagyobbSzámButton2;
-    private JButton a0ValKezdődőSzámjegysorButton2;
+    private JButton j2Opcio1;
+    private JButton j2Opcio2;
     private JTextField textField3;
     private JTextField textField4;
+    private JScrollPane scrollPane;
     private String currentValue=GameItself.numberGenerator();
 
     public PvPForm() {
@@ -32,8 +34,16 @@ public class PvPForm extends JFrame{
         currentNumber.setText(currentValue);
         textField1.setHorizontalAlignment(JTextField.CENTER);
         textField2.setHorizontalAlignment(JTextField.CENTER);
-        a0NálNagyobbSzámButton2.setEnabled(false);
-        a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+        textField3.setHorizontalAlignment(JTextField.CENTER);
+        textField4.setHorizontalAlignment(JTextField.CENTER);
+        j2Opcio1.setEnabled(false);
+        j2Opcio2.setEnabled(false);
+
+        scrollPane.setBorder(new LineBorder(Color.BLACK));
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.getViewport().add(msg_area);
+
+        msg_area.setMargin( new Insets(10,10,10,10) );
 
         ExitButton.addActionListener(new ActionListener() {
             @Override
@@ -48,7 +58,7 @@ public class PvPForm extends JFrame{
                 new StartMenuForm().setVisible(true);
             }
         });
-        a0NálNagyobbSzámButton1.addActionListener(new ActionListener() {
+        j1Opcio1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String getText = textField1.getText();
@@ -56,32 +66,40 @@ public class PvPForm extends JFrame{
                 if (GameItself.checkerOne(currentValue, choice) == true) {
                     currentValue = GameItself.decrease(currentValue, choice);
                     currentNumber.setText(currentValue);
-                    kéremVálasszonEgyOpciótTextArea.append("\n a játékos1 lépett, ");
+                    msg_area.append("\nAz 1.Játékos lépett, ");
                     textField1.setText("");
                     if (!currentValue.contains("0") && !currentValue.contains("1")) {
-                        kéremVálasszonEgyOpciótTextArea.append("\n Játék vége !!! A játékos1 vesztett");
-                        a0NálNagyobbSzámButton1.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(false);
-                        a0NálNagyobbSzámButton2.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+                        Object[] options = {"Új játék", "Vissza a menübe"};
+                        int dialogresult = JOptionPane.showOptionDialog(null, "Játék vége! Az 2.Játékos nyert! \nSzeretnének újra játszani?\n\n",
+                                "Játék vége", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        if (dialogresult == JOptionPane.YES_OPTION){
+                            setVisible(false);
+                            new PvPForm().setVisible(true);
+                        }
+
+                        if (dialogresult == JOptionPane.NO_OPTION){
+                            setVisible(false);
+                            new StartMenuForm().setVisible(true);
+                        }
+
                     } else {
-                        kéremVálasszonEgyOpciótTextArea.append("Játékos 2 következik");
-                        a0NálNagyobbSzámButton2.setEnabled(true);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(true);
-                        a0NálNagyobbSzámButton1.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(false);
+                        msg_area.append("A 2.Játékos következik.\n");
+                        j2Opcio1.setEnabled(true);
+                        j2Opcio2.setEnabled(true);
+                        j1Opcio1.setEnabled(false);
+                        j1Opcio2.setEnabled(false);
                     }
                 } else {
-                    kéremVálasszonEgyOpciótTextArea.append("\n érvénytelen pozíció a játékos2 következik");
-                    a0NálNagyobbSzámButton2.setEnabled(true);
-                    a0ValKezdődőSzámjegysorButton2.setEnabled(true);
-                    a0NálNagyobbSzámButton1.setEnabled(false);
-                    a0ValKezdődőSzámjegysorButton1.setEnabled(false);
+                    msg_area.append("\nÉrvénytelen pozíció, a 2.Játékos következik.\n");
+                    j2Opcio1.setEnabled(true);
+                    j2Opcio2.setEnabled(true);
+                    j1Opcio1.setEnabled(false);
+                    j1Opcio2.setEnabled(false);
                 }
             }
         });
 
-        a0ValKezdődőSzámjegysorButton1.addActionListener(new ActionListener() {
+        j1Opcio2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String getText = textField2.getText();
@@ -89,31 +107,39 @@ public class PvPForm extends JFrame{
                 if (GameItself.chekerTwo(currentValue, choice) == true) {
                     currentValue = GameItself.removeing(currentValue, choice);
                     currentNumber.setText(currentValue);
-                    kéremVálasszonEgyOpciótTextArea.append("\n a játékos1 lépett, ");
+                    msg_area.append("\nAz 1.Játékos lépett, ");
                     textField2.setText("");
                     if (!currentValue.contains("0") && !currentValue.contains("1")) {
-                        kéremVálasszonEgyOpciótTextArea.append("\n Játék vége !!! A Játékos1 vesztett");
-                        a0NálNagyobbSzámButton1.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(false);
-                        a0NálNagyobbSzámButton2.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+                        Object[] options = {"Új játék", "Vissza a menübe"};
+                        int dialogresult = JOptionPane.showOptionDialog(null, "Játék vége! Az 2.Játékos nyert! \nSzeretnének újra játszani?\n\n",
+                                "Játék vége", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        if (dialogresult == JOptionPane.YES_OPTION){
+                            setVisible(false);
+                            new PvPForm().setVisible(true);
+                        }
+
+                        if (dialogresult == JOptionPane.NO_OPTION){
+                            setVisible(false);
+                            new StartMenuForm().setVisible(true);
+                        }
+
                     } else {
-                        kéremVálasszonEgyOpciótTextArea.append("Játékos2 következik");
-                        a0NálNagyobbSzámButton2.setEnabled(true);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(true);
-                        a0NálNagyobbSzámButton1.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(false);
+                        msg_area.append("A 2.Játékos következik.\n");
+                        j2Opcio1.setEnabled(true);
+                        j2Opcio2.setEnabled(true);
+                        j1Opcio1.setEnabled(false);
+                        j1Opcio2.setEnabled(false);
                     }
                 } else {
-                    kéremVálasszonEgyOpciótTextArea.append("\n érvénytelen pozíció a Játékos2 következik");
-                    a0NálNagyobbSzámButton2.setEnabled(true);
-                    a0ValKezdődőSzámjegysorButton2.setEnabled(true);
-                    a0NálNagyobbSzámButton1.setEnabled(false);
-                    a0ValKezdődőSzámjegysorButton1.setEnabled(false);
+                    msg_area.append("\nÉrvénytelen pozíció, a 2.Játékos következik.\n");
+                    j2Opcio1.setEnabled(true);
+                    j2Opcio2.setEnabled(true);
+                    j1Opcio1.setEnabled(false);
+                    j1Opcio2.setEnabled(false);
                 }
             }
         });
-        a0NálNagyobbSzámButton2.addActionListener(new ActionListener() {
+        j2Opcio1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String getText = textField3.getText();
@@ -121,32 +147,44 @@ public class PvPForm extends JFrame{
                 if (GameItself.checkerOne(currentValue, choice) == true) {
                     currentValue = GameItself.decrease(currentValue, choice);
                     currentNumber.setText(currentValue);
-                    kéremVálasszonEgyOpciótTextArea.append("\n a játékos2 lépett, ");
+                    msg_area.append("\nA 2.Játékos lépett, ");
                     textField3.setText("");
                     if (!currentValue.contains("0") && !currentValue.contains("1")) {
-                        kéremVálasszonEgyOpciótTextArea.append("\n Játék vége !!! A játékos2 vesztett");
-                        a0NálNagyobbSzámButton1.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(false);
-                        a0NálNagyobbSzámButton2.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+                        Object[] options = {"Új játék", "Vissza a menübe"};
+                        int dialogresult = JOptionPane.showOptionDialog(null, "Játék vége! Az 1.Játékos nyert! \nSzeretnének újra játszani?\n\n",
+                                "Játék vége", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        if (dialogresult == JOptionPane.YES_OPTION){
+                            setVisible(false);
+                            new PvPForm().setVisible(true);
+                        }
+
+                        if (dialogresult == JOptionPane.NO_OPTION){
+                            setVisible(false);
+                            new StartMenuForm().setVisible(true);
+                        }
+
                     } else {
-                        kéremVálasszonEgyOpciótTextArea.append("Játékos 1 következik");
-                        a0NálNagyobbSzámButton1.setEnabled(true);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(true);
-                        a0NálNagyobbSzámButton2.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+                        msg_area.append("Az 1.Játékos következik.\n");
+                        j1Opcio1.setEnabled(true);
+                        j1Opcio2.setEnabled(true);
+                        j2Opcio1.setEnabled(false);
+                        j2Opcio2.setEnabled(false);
 
                     }
                 }
                 else {
-                    kéremVálasszonEgyOpciótTextArea.append("\n érvénytelen pozíció a játékos1 következik");
+                    msg_area.append("\nÉrvénytelen pozíció, az 1.Játékos következik.\n");
+                    j1Opcio1.setEnabled(true);
+                    j1Opcio2.setEnabled(true);
+                    j2Opcio1.setEnabled(false);
+                    j2Opcio2.setEnabled(false);
                 }
             }
 
         });
 
 
-        a0ValKezdődőSzámjegysorButton2.addActionListener(new ActionListener() {
+        j2Opcio2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String getText = textField4.getText();
@@ -154,27 +192,35 @@ public class PvPForm extends JFrame{
                 if (GameItself.chekerTwo(currentValue, choice) == true) {
                     currentValue = GameItself.removeing(currentValue, choice);
                     currentNumber.setText(currentValue);
-                    kéremVálasszonEgyOpciótTextArea.append("\n a játékos2 lépett, ");
+                    msg_area.append("\nA 2.Játékos lépett, ");
                     textField4.setText("");
                     if (!currentValue.contains("0") && !currentValue.contains("1")) {
-                        kéremVálasszonEgyOpciótTextArea.append("\n Játék vége !!! A Játékos2 vesztett");
-                        a0NálNagyobbSzámButton1.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(false);
-                        a0NálNagyobbSzámButton2.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+                        Object[] options = {"Új játék", "Vissza a menübe"};
+                        int dialogresult = JOptionPane.showOptionDialog(null, "Játék vége! Az 1.Játékos nyert! \nSzeretnének újra játszani?\n\n",
+                                "Játék vége", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        if (dialogresult == JOptionPane.YES_OPTION){
+                            setVisible(false);
+                            new PvPForm().setVisible(true);
+                        }
+
+                        if (dialogresult == JOptionPane.NO_OPTION){
+                            setVisible(false);
+                            new StartMenuForm().setVisible(true);
+                        }
+
                     } else {
-                        kéremVálasszonEgyOpciótTextArea.append("Játékos1 következik");
-                        a0NálNagyobbSzámButton1.setEnabled(true);
-                        a0ValKezdődőSzámjegysorButton1.setEnabled(true);
-                        a0NálNagyobbSzámButton2.setEnabled(false);
-                        a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+                        msg_area.append("Az 1.Játékos következik.\n");
+                        j1Opcio1.setEnabled(true);
+                        j1Opcio2.setEnabled(true);
+                        j2Opcio1.setEnabled(false);
+                        j2Opcio2.setEnabled(false);
                     }
                 } else {
-                    kéremVálasszonEgyOpciótTextArea.append("\n érvénytelen pozíció a Játékos1 következik");
-                    a0NálNagyobbSzámButton1.setEnabled(true);
-                    a0ValKezdődőSzámjegysorButton1.setEnabled(true);
-                    a0NálNagyobbSzámButton2.setEnabled(false);
-                    a0ValKezdődőSzámjegysorButton2.setEnabled(false);
+                    msg_area.append("\nÉrvénytelen pozíció, az 1.Játékos következik.\n");
+                    j1Opcio1.setEnabled(true);
+                    j1Opcio2.setEnabled(true);
+                    j2Opcio1.setEnabled(false);
+                    j2Opcio2.setEnabled(false);
                 }
             }
         });
@@ -187,11 +233,7 @@ public class PvPForm extends JFrame{
         g2d.setStroke(stroke);
         g2d.setColor(c);
 
-        g2d.drawLine(400, 265, 400, 225);
-        g2d.drawLine(400, 305, 400, 395);
-        g2d.drawLine(400, 430, 400, 510);
-        g2d.drawLine(20, 265, 780, 265);
-        g2d.drawLine(20, 510, 780, 510);
+        g2d.drawLine(400, 320, 400, 520);
     }
 
     public void paint(Graphics g) {
